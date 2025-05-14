@@ -1,0 +1,603 @@
+.rover-images-container {
+  width: 100%;
+  background: #030615;
+  color: #fff;
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  padding: 2rem 0;
+}
+
+.rover-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.rover-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+/* Rover Selector */
+.rover-selector {
+  display: flex;
+  gap: 1.3rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  padding-bottom: 10px;
+  min-height: 95px;
+  align-items: center;
+  scrollbar-color: #444 #111217;
+  scrollbar-width: thin;
+}
+
+.rover-selector::-webkit-scrollbar {
+  height: 8px;
+}
+.rover-selector::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+.rover-selector::-webkit-scrollbar-track {
+  background: #111217;
+}
+
+.image-gallery-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0 2rem 2rem;
+  position: relative;
+}
+
+.rover-header {
+  display: none;
+}
+
+/* Sidebar */
+.mars-sidebar {
+  width: 400px;
+  min-width: 320px;
+  max-width: 480px;
+  background: #111217;
+  border-left: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 2rem 2rem 2rem;
+  box-sizing: border-box;
+  height: 100vh;
+  position: relative;
+}
+
+.mars-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.rover-circle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  min-width: 64px;
+  min-height: 64px;
+  max-width: 64px;
+  max-height: 64px;
+  border-radius: 50%;
+  background: #ccc;
+  border: 2px solid #fff;
+  cursor: pointer;
+  transition: border 0.2s, transform 0.2s;
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+
+.rover-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.rover-circle.selected {
+  border: 4px solid #fff;
+  transform: scale(1.08);
+}
+
+.mars-info {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #444;
+  padding-bottom: 1rem;
+}
+.mars-info:last-child {
+  border-bottom: none;
+}
+
+.mars-label {
+  color: #aaa;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+}
+
+.mars-value {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.mars-description {
+  margin-top: 2rem;
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* Masonry Layout */
+.masonry-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.masonry-item {
+  width: 100%;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #111217;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.masonry-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.masonry-item:hover img {
+  transform: scale(1.08);
+  box-shadow: 0 8px 32px 0 rgba(255,255,255,0.12);
+}
+
+/* Custom scrollbar for the masonry layout */
+.masonry-layout::-webkit-scrollbar {
+  width: 8px;
+}
+
+.masonry-layout::-webkit-scrollbar-track {
+  background: #111217;
+}
+
+.masonry-layout::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.masonry-layout::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Modal Styles */
+.image-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-modal-content {
+  background: #181a20;
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #fff;
+  position: relative;
+  box-shadow: 0 0 40px 2px #000;
+}
+.modal-close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.modal-image {
+  max-width: 100%;
+  max-height: 60vh;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+}
+.modal-image-details {
+  font-size: 1.1rem;
+}
+
+/* Navigation Buttons */
+.date-navigation {
+  margin-bottom: 2rem;
+}
+.nav-button {
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-button:hover {
+  background: #fff;
+  color: #222;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .masonry-layout {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+  .masonry-item {
+    width: 180px;
+    height: 180px;
+  }
+  .mars-sidebar {
+    width: 280px;
+    min-width: 200px;
+    padding: 1.5rem 1rem;
+  }
+}
+@media (max-width: 800px) {
+  .rover-images-container {
+    flex-direction: column;
+  }
+  .mars-sidebar {
+    width: 100%;
+    max-width: 100vw;
+    min-width: unset;
+    border-left: none;
+    border-top: 1px solid #444;
+    height: auto;
+    padding: 1.5rem 1rem;
+  }
+  .image-gallery-column {
+    padding: 1rem;
+  }
+  .masonry-layout {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1rem;
+  }
+  .masonry-item {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.rover-layout {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  min-height: 100vh;
+  background: #030615;
+  box-sizing: border-box;
+}
+
+.rover-images-grid {
+  flex: 1 1 0;
+  padding: 2rem 1rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+/* Custom scrollbar for the entire grid */
+.rover-images-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.rover-images-grid::-webkit-scrollbar-track {
+  background: #111217;
+}
+
+.rover-images-grid::-webkit-scrollbar-thumb {
+  background: #444;
+  border-radius: 4px;
+}
+
+.rover-images-grid::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.rover-description-section {
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  max-width: 1200px;
+  margin: 2rem auto;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.rover-description-section h3 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  text-align: center;
+}
+
+.rover-status {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.status-indicator {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.status-indicator.active {
+  background: rgba(46, 213, 115, 0.2);
+  color: #2ed573;
+  border: 1px solid rgba(46, 213, 115, 0.3);
+}
+
+.status-indicator.retired {
+  background: rgba(255, 71, 87, 0.2);
+  color: #ff4757;
+  border: 1px solid rgba(255, 71, 87, 0.3);
+}
+
+.rover-mission {
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.rover-details {
+  color: #ccc;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.rover-details p {
+  margin-bottom: 1.5rem;
+}
+
+.rover-achievements {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.rover-achievements strong {
+  color: #fff;
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.error-message {
+  padding: 2rem;
+  text-align: center;
+  color: #ff4757;
+}
+
+.error-text {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.rover-info-fallback {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+  text-align: left;
+  color: #fff;
+}
+
+.rover-info-fallback h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.rover-info-fallback p {
+  color: #ccc;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.rover-info-fallback .rover-achievements {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+}
+
+.rover-info-fallback .rover-achievements strong {
+  color: #fff;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.rover-sidebar {
+  width: 320px;
+  min-width: 260px;
+  max-width: 350px;
+  background: #111217;
+  border-left: 1px solid #444;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 2rem 2rem 2rem;
+  box-sizing: border-box;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  overflow-y: auto;
+}
+.mars-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+.rover-selector {
+  display: flex;
+  gap: 1.3rem;
+  margin-bottom: 1rem;
+}
+.rover-circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #ccc;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border 0.2s, transform 0.2s;
+}
+.rover-circle.selected {
+  border: 4px solid #fff;
+  transform: scale(1.08);
+}
+.rover-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.mars-info {
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #444;
+  padding-bottom: 1rem;
+}
+.mars-info:last-child {
+  border-bottom: none;
+}
+.mars-label {
+  color: #aaa;
+  font-size: 1rem;
+  margin-bottom: 0.2rem;
+  display: block;
+}
+.mars-value {
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: block;
+}
+.mars-description {
+  margin-top: 2rem;
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+.date-navigation {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.nav-button {
+  background: #222;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-button:hover {
+  background: #fff;
+  color: #222;
+}
+@media (max-width: 1000px) {
+  .rover-layout {
+    flex-direction: column;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  .rover-sidebar {
+    width: 100%;
+    min-width: unset;
+    max-width: unset;
+    border-left: none;
+    border-top: 1px solid #444;
+    height: auto;
+    position: static;
+    padding: 1.5rem 1rem;
+  }
+}
+@media (max-width: 700px) {
+  .masonry-layout {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+  .rover-sidebar {
+    padding: 1rem 0.5rem;
+  }
+}
+
+/* Tooltip styles at the end for priority */
+.rover-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background: #222;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px 12px;
+  position: absolute;
+  left: 50%;
+  top: -38px;
+  transform: translateX(-50%) translateY(-8px);
+  z-index: 9999;
+  font-size: 1rem;
+  font-weight: 500;
+  pointer-events: none;
+  transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+}
+
+.rover-circle:hover .rover-tooltip,
+.rover-circle:focus .rover-tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(-18px);
+}

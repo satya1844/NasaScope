@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "framer-motion": "^12.10.4",
+    "react-fast-marquee": "^1.6.5"
+  }
+}
